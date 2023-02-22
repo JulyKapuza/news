@@ -6,8 +6,7 @@ export default function AppBar() {
   return (
     <header style={{display:"flex", justifyContent: 'space-evenly'}}>
       <Navigation />
-      {/* <UserMenu /> */}
-         <AuthNav />
+      <AuthNav />
     </header>
   );
 }

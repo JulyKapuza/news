@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
 
 
-export async function fetchNews(page) {
+export async function fetchNews(page:number) {
     const response = await axios.get(`/posts?_page=${page}&_limit=2`);
     return response.data;
     

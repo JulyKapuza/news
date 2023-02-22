@@ -1,10 +1,10 @@
-import { INews } from "../models";
+import { INews } from "../interfaces";
 
 interface NewsProp {
   news: INews[];
-  onDelete: any
+  // onDelete: any
 }
-export function NewsList({ news, onDelete }: NewsProp) {
+export function NewsList({ news}: NewsProp) {
   return (
     <ul>
       {news.map(({ id, title, body }) => {
@@ -12,9 +12,9 @@ export function NewsList({ news, onDelete }: NewsProp) {
           <li key={id}>
             <h2>{title}</h2>
             <p>{body}</p>
-            <button type="button" onClick={()=>{onDelete(id)}}>
+            {/* <button type="button" onClick={()=>{onDelete(id)}}>
         Delete
-      </button>
+      </button> */}
           </li>
         );
       })}
