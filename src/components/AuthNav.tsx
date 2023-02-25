@@ -1,24 +1,23 @@
 import { NavLink } from "react-router-dom";
-import {useDispatch, useSelector} from 'react-redux'
-import { selectIsAuth } from "../redux/auth/selectors";
-import { useEffect } from "react";
-import { signIn } from "../redux/auth/authSlice";
 
+import { selectIsAuth } from "../redux/auth/selectors";
+
+import {useAppSelector} from '../hooks'
 export const AuthNav = () => {
-  const isAuth = useSelector(selectIsAuth);
-  const dispatch = useDispatch();
+  const isAuth = useAppSelector(selectIsAuth);
+  // const dispatch = useDispatch();
 
   //якщо перезавантажили сторінку
-  useEffect(()=>{
-    const getAuthUser =(keyValue:string)=> {
-      const user = localStorage.getItem(keyValue);
-      return user !== null ? JSON.parse(user) : {};
-  };
-    const authUser=  getAuthUser("LOGIN"); 
-    if (Object.keys(authUser).length !== 0){
-      dispatch(signIn())
-    }
-  })
+  // useEffect(()=>{
+  //   const getAuthUser =(keyValue:string)=> {
+  //     const user = localStorage.getItem(keyValue);
+  //     return user !== null ? JSON.parse(user) : {};
+  // };
+  //   const authUser=  getAuthUser("LOGIN"); 
+  //   if (Object.keys(authUser).length !== 0){
+  //     dispatch(signIn())
+  //   }
+  // })
 
 
  

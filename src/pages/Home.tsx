@@ -1,5 +1,9 @@
+import { NewsItemQR } from "../components/NewsItemQR"; 
 export default function Home() {
-  return <div>Home</div>;
+  return <>
+  <h2>NewsItemQR</h2>
+    <NewsItemQR/>
+  </>;
 }
 
 
