@@ -1,12 +1,19 @@
 import { Outlet } from "react-router-dom";
-import AppBar from "./AppBar";
+import {Header} from "./Header";
+import { Footer } from "./Footer";
+import { Container, Box } from "@mui/material";
 
-export default function Layout() {
+
+export const Layout= ()=> {
   return (
-    <>
-      <AppBar />
-      <Outlet />
-      <footer>2023</footer>
-    </>
+    <Box sx={{minHeight: "100vh", display:'flex', flexDirection:" column"}}>
+      <Header />
+      <Box component="main" style={{flex:" 1 1 auto"}}>
+      <Container>
+          <Outlet />
+      </Container>
+      </Box>
+     <Footer/>
+    </Box>
   );
 }

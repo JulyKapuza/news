@@ -11,17 +11,15 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/authSlice';
-import newsReducer from './news/newsSlice'
+
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    news:newsReducer
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  // whitelist: ['news'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

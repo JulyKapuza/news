@@ -1,9 +1,23 @@
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
-export default function Navigation() {
+
+import { List, ListItem,  } from "@mui/material";
+
+export const Navigation = () => {
+  const { t } = useTranslation();
+
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/news">News</NavLink>
-    </nav>
+    <List component="nav" sx={{ display: "flex" }}>
+      <ListItem disablePadding sx={{ marginRight: "24px" }}>
+        <NavLink className={"link"} to="/">
+          {t("home")}
+        </NavLink>
+      </ListItem>
+      <ListItem disablePadding>
+        <NavLink className={"link"} to="/news">
+          {t("news")}
+        </NavLink>
+      </ListItem>
+    </List>
   );
-}
+};

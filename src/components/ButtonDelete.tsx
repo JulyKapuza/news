@@ -1,39 +1,29 @@
 import { useQueryClient } from "react-query";
 import { useDeleteNews } from "../hooks";
-import { IData, INews } from "../interfaces";
+import { IconButton } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
-interface IProp {
-  data: INews[] | any; // який тип
+interface ButtonDeleteProps {
   id: string;
 }
 
-export const ButtonDelete = ({ data, id }: IProp) => {
+export const ButtonDelete = ({ id }: ButtonDeleteProps) => {
   const queryClient = useQueryClient();
+  const { mutateAsync } = useDeleteNews();
 
-  const { mutate: deleteOneItem } = useDeleteNews();
-
-  const handleDelete = (newsId: string) => {
-    const newPagesArray: { data: INews[]; pageParam: number }[] = [];
-    data?.pages.forEach((page: { data: INews[]; pageParam: number }) => {
-      const newDataNews = page.data.filter(
-        (item: { id: string }) => item.id !== newsId
-      );
-      newPagesArray.push({
-        data: newDataNews,
-        pageParam: page.pageParam,
-      });
-    });
-
-    queryClient.setQueryData<IData>("news", (data) => ({
-      pages: newPagesArray,
-      pageParams: data?.pageParams,
-    }));
-    deleteOneItem(newsId);
+  const handleDelete = async () => {
+    await mutateAsync(id);
+    queryClient.invalidateQueries("news");
   };
 
   return (
-    <button onClick={() => handleDelete(id)} type="button">
-      Delete
-    </button>
+    <IconButton
+      onClick={() => handleDelete()}
+      aria-label="delete"
+      color="error"
+      size="small"
+    >
+      <ClearIcon fontSize="small" />
+    </IconButton>
   );
 };

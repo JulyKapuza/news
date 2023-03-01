@@ -1,28 +1,16 @@
-import { useSelector } from "react-redux";
+import {PropsWithChildren } from 'react'
 import { useLocation, Navigate } from "react-router-dom";
+import { useAppSelector } from "../hooks";
 import { selectIsAuth } from "../redux/auth/selectors";
 
-
-const RequireAuth = ({ children }: any) => {
+export const RequireAuth = ({ children }: PropsWithChildren) => {
   const location = useLocation();
-  const isAuth = useSelector(selectIsAuth);
-  
-// const getAuthUser =(keyValue:string)=> {
-//         const user = localStorage.getItem(keyValue);
-//         return user !== null ? JSON.parse(user) : {};
-//     };
-//   const user=  getAuthUser("LOGIN"); 
+  const isAuth = useAppSelector(selectIsAuth);
 
   if (!isAuth) {
-    
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/" state={{ from: location }} />;
   }
-
-  // if (Object.keys(user).length === 0) {
-    
-  //   return <Navigate to="/login" state={{ from: location }} />;
-  // }
-  return children;
+  return  <>{children}</>;
 };
 
-export { RequireAuth };
+
