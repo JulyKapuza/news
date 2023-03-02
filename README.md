@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 1. Start JSON Server
 
-### `yarn / npm start(run) server`
+### `yarn / npm run server`
 
 2. Perform the command
 
