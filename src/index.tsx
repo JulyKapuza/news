@@ -34,7 +34,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/news">
+        <BrowserRouter basename="/newsApp">
           <QueryClientProvider client={queryClient}>
             <I18nextProvider i18n={i18n}>
               <ThemeProvider theme={theme}>
