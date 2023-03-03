@@ -10,6 +10,7 @@ import {
   Skeleton,
 } from "@mui/material";
 import { SelectedDataOfNews } from "../types";
+import breakingnews from '../defaultphoto/breakingnews.png'
 
 export const NewsListTrend = () => {
   const { data, isLoading, error, isError } = useFetchMainNews();
@@ -49,7 +50,7 @@ export const NewsListTrend = () => {
                   component="img"
                   height="180"
                   alt={title}
-                  image={img}
+                  image={img? img: breakingnews}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h6" component="div">
