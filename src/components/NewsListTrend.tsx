@@ -11,21 +11,23 @@ import {
 } from "@mui/material";
 import { SelectedDataOfNews } from "../types";
 import breakingnews from '../defaultphoto/breakingnews.png'
+import  {SkeletonGrid}  from "./SkeletonGrid";
 
 export const NewsListTrend = () => {
   const { data, isLoading, error, isError } = useFetchMainNews();
   if (isLoading) {
     return (
-      <Box sx={{ pt: 0.5 }}>
-        <Skeleton
-          animation="wave"
-          variant="rectangular"
-          width={300}
-          height={138}
-        />
-        <Skeleton animation="wave" width={300} />
-        <Skeleton animation="wave" width={300} height={70} />
-      </Box>
+      <SkeletonGrid/>
+      // <Box sx={{ pt: 0.5 }}>
+      //   <Skeleton
+      //     animation="wave"
+      //     variant="rectangular"
+      //     width={300}
+      //     height={138}
+      //   />
+      //   <Skeleton animation="wave" width={300} />
+      //   <Skeleton animation="wave" width={300} height={70} />
+      // </Box>
     );
   }
 
